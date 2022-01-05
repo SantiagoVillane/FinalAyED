@@ -1,0 +1,2 @@
+Routers: 3
+Computadoras: 5
