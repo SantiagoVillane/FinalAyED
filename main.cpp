@@ -16,8 +16,6 @@ int main()
     cout<<"Si desea modificarlo modifiquelo y luego presione enter"<<endl;
     cin.get();
     administrador.leerArchivo();
-    cout<<"Cantidad de Routers: "<<Routers<<endl;
-    cout<<"Cantidad de Computadoras "<<Computadoras<<endl;
     
 
 

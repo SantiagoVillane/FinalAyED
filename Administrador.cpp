@@ -4,8 +4,16 @@
 #include <unistd.h>
 #include<string.h>
 #include <ctype.h>
+#include <fstream>
+#include <sstream>
 #include"Administrador.h"
 #include"VarGlobales.h"
+
+
+#define INF 9999
+#define TAM_MAX_PAG 25
+#define TAM_MIN_PAG 5
+
 using namespace std;
 
 
@@ -38,10 +46,34 @@ void Administrador :: leerArchivo()
     Routers = Routers_;
     Computadoras = Computadoras_;
 
-                    
+    
+    cout<<"Cantidad de Routers: "<<Routers<<endl;
+    cout<<"Cantidad de Computadoras "<<Computadoras<<endl;                
                     
                     
     fclose ( fichero );
+    std::ifstream archivo_conf("config.txt");
+	string linea;
+	while(getline(archivo_conf, linea)){
+		switch(linea[0]){
+		
+		case('*'):
+		{
+			linea.erase(linea.begin());
+			std::istringstream iss(linea);
+			int origen, destino, ancho_banda;
+			if (!(iss >> origen >> destino >> ancho_banda)) { 
+				cout<<"Error en la lectura de la conexion de router."<<endl;
+				break; 
+			} 
+			cout<<endl;
+			cout<<"Origen -> "<<origen<<" Destino -> "<<destino<<" Ancho de banda -> "<<ancho_banda<<" Peso -> "<<TAM_MAX_PAG/ancho_banda<<endl;
+		}
+		break;
+		}
+	}
+
+
 }
 
 
