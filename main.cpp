@@ -14,10 +14,10 @@ int main()
     cout<<"--------Bienvenido al examen final de Algoritmos y estructuras de datos --------"<<endl;
     cout<<"En el directorio de este programa encontrara un archivo configurable llamado config.txt"<<endl;
     cout<<"Si desea modificarlo modifiquelo y luego presione enter"<<endl;
+    cout<<"Recuerde que si no lo modifica y solo presiona enter el archivo quedara como la ultima vez que fue modificado"<<endl;
     cin.get();
     administrador.leerArchivo();
-    
-
+       
 
     return 0;
 }

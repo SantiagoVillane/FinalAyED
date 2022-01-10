@@ -1,12 +1,14 @@
-#include<iostream>
-#include <stdio.h>      /* printf, fgets */
-#include <stdlib.h> 
-#include <unistd.h>
-#include<string.h>
-#include <ctype.h>
 #include <fstream>
 #include <sstream>
-#include"Administrador.h"
+#include <iostream>
+#include <string>
+#include <string.h>
+#include <set>
+#include <sys/types.h>
+#include <signal.h>
+#include <unistd.h>
+
+#include "Administrador.h"
 #include"VarGlobales.h"
 
 
@@ -16,17 +18,17 @@
 
 using namespace std;
 
-
 void Administrador :: leerArchivo()
 {
     FILE *fichero = fopen ( "config.txt" , "r" );
-            
         
     const char delimitador[2] = " ";
     char cadena1 [200];
     char cadena2 [200];
     char *linea1;
     char *linea2;
+
+    
     
         
     
@@ -45,7 +47,7 @@ void Administrador :: leerArchivo()
     Computadoras_ = atoi(linea2);
     Routers = Routers_;
     Computadoras = Computadoras_;
-
+    
     
     cout<<"Cantidad de Routers: "<<Routers<<endl;
     cout<<"Cantidad de Computadoras "<<Computadoras<<endl;                
@@ -61,25 +63,18 @@ void Administrador :: leerArchivo()
 		{
 			linea.erase(linea.begin());
 			std::istringstream iss(linea);
-			int origen, destino, ancho_banda;
+		//	int origen, destino, ancho_banda;
 			if (!(iss >> origen >> destino >> ancho_banda)) { 
 				cout<<"Error en la lectura de la conexion de router."<<endl;
 				break; 
 			} 
 			cout<<endl;
-			cout<<"Origen -> "<<origen<<" Destino -> "<<destino<<" Ancho de banda -> "<<ancho_banda<<" Peso -> "<<TAM_MAX_PAG/ancho_banda<<endl;
-		}
+            cout<<"Origen -> "<<origen<<" Destino -> "<<destino<<" Ancho de banda -> "<<ancho_banda<<" Peso -> "<<TAM_MAX_PAG/ancho_banda<<endl;
+            
 		break;
 		}
 	}
+    
 
 
 }
-
-
-
-
-
-
-
-

@@ -7,5 +7,4 @@ extern int Computadoras;
 
 
 
-
 #endif
