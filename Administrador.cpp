@@ -28,11 +28,7 @@ void Administrador :: leerArchivo()
     char *linea1;
     char *linea2;
 
-    
-    
-        
-    
-       
+
     fgets (cadena1, 200, fichero);
     fgets (cadena2, 200, fichero);
        
@@ -45,12 +41,12 @@ void Administrador :: leerArchivo()
                     
     Routers_ = atoi(linea1);
     Computadoras_ = atoi(linea2);
-    Routers = Routers_;
-    Computadoras = Computadoras_;
+    //Routers = Routers_;
+    //Computadoras = Computadoras_;
     
     
-    cout<<"Cantidad de Routers: "<<Routers<<endl;
-    cout<<"Cantidad de Computadoras "<<Computadoras<<endl;                
+    cout<<"Cantidad de Routers: "<<Routers_<<endl;
+    cout<<"Cantidad de Computadoras "<<Computadoras_<<endl;                
                     
                     
     fclose ( fichero );
@@ -75,6 +71,6 @@ void Administrador :: leerArchivo()
 		}
 	}
     
-
+    }
 
 }

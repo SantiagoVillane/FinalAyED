@@ -12,9 +12,9 @@
 
 #define INF 999 
 #define TAM_MAX_PAG 25
-using namespace std ;
+using namespace std;
 
-int cost[100][100] , n  ; 
+int cost[100][100], n ; 
 
 int getMin(int dist[] , bool visited[]){
     int key = 0 ; 
@@ -72,13 +72,21 @@ void dijkstra(int src ){
 
 int main(void) { 
 
-      int Routers;
+        int Routers;
         int Computadoras;
         int origen;
         int destino;
         int ancho_banda;
         /* Definiendo la matriz de adyacencia */
        int i, j, **A;
+       for(int i=0; i<100; i++){
+           for (int j = 0; j < 100; j++){
+                if(i==j)
+                    cost[i][j] = 0;
+                else
+                    cost[i][j] = INF;
+           }
+       }
 
     
        FILE *fichero = fopen ( "config.txt" , "r" );
@@ -124,7 +132,7 @@ std::ifstream archivo_conf("config.txt");
             cout<<"Origen -> "<<origen<<" Destino -> "<<destino<<" Ancho de banda -> "<<ancho_banda<<" Peso -> "<<TAM_MAX_PAG/ancho_banda<<endl;
         
           
-     
+        /*
        for ( i = 0; i < Routers; i++ )
         {
             //cout<<"el valor de i es: "<<i<<endl;
@@ -156,11 +164,13 @@ std::ifstream archivo_conf("config.txt");
               else{
                   cost[i][j]=INF;
               }
-              
-          
-     
+            
         }
-       
+        */
+            cost[origen][destino] = ancho_banda;
+            cout<<origen <<endl;
+            cout<<destino <<endl;
+
 		//break;
 		}
       
@@ -169,16 +179,20 @@ std::ifstream archivo_conf("config.txt");
 
 
 }
-    }
+    
       
    /* cout<<"Enter n : " ; 
     cin>>n ; */
-           cout<<" cost matrix : \n" ; 
+        cout<<" cost matrix : \n" ; 
     for(int i = 0 ;i < Routers ; i++){
         for(int j = 0 ; j< Routers; j++)
-        cout<<cost[i][j] ; 
+            cout<<cost[i][j] <<"         " ; 
+        cout<< endl;
     }
-    int src ; 
-    cout<<"\nEnter source : " ;  cin>>src ;
-    dijkstra(src) ; 
 }
+//    int src ; 
+  //  cout<<"\nEnter source : " ;  cin>>src ;
+    // dijkstra(src);
+
+
+
