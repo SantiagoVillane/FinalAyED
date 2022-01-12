@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Administrador.cpp"
+#include "Administrador.h"
 #include "VarGlobales.h"
 
 using namespace std;
