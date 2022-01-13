@@ -20,10 +20,8 @@ class Administrador
 		int cost[100][100];
 		
 	public:
-		
-		void leerArchivo();
 		void inicializarMatrizCostos();
-		void dijkstra();
+		void leerArchivo();
 		
 		
 		

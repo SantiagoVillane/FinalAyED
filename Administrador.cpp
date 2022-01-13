@@ -7,7 +7,7 @@
 #include <sys/types.h>
 #include <signal.h>
 #include <unistd.h>
-
+#include<bits/stdc++.h>
 #include "Administrador.h"
 #include"VarGlobales.h"
 
@@ -17,6 +17,23 @@
 #define TAM_MIN_PAG 5
 
 using namespace std;
+/*Inicializamos la matriz con todos los pesos en INF, ya que no sabemos que nodos estan conectados entre si,
+ La diagonal proncipal la dejamos en 0 porque estamos parados en el mismo nodo por ende el coste es 0 */
+void Administrador::inicializarMatrizCostos()
+{
+    for(int i=0; i<100; i++){
+           for (int j = 0; j < 100; j++){
+                if(i==j)
+                    cost[i][j] = 0;
+                else
+                    cost[i][j] = INF;
+           }
+       }
+
+      
+}
+
+
 
 void Administrador :: leerArchivo()
 {
@@ -66,34 +83,16 @@ void Administrador :: leerArchivo()
 			} 
 			cout<<endl;
             cout<<"Origen -> "<<origen<<" Destino -> "<<destino<<" Ancho de banda -> "<<ancho_banda<<" Peso -> "<<TAM_MAX_PAG/ancho_banda<<endl;
-            cost[origen][destino] = ancho_banda;
-            for(int i=0; i<Routers_; i++){
-           for (int j = 0; j < Routers_; j++){
-                
-                   cout<< cost[origen][destino] <<endl;
-                
-           }
-       }
+            cost[origen][destino] = ancho_banda; //guardamos los valores de las conexiones en la matriz 
+            
             
 		}
 	}
     
     }
-
-}
-
-void Administrador::inicializarMatrizCostos()
-{
-    for(int i=0; i<Routers_; i++){
-           for (int j = 0; j < Routers_; j++){
-                if(i==j)
-                    cost[i][j] = 0;
-                else
-                    cost[i][j] = INF;
-           }
-       }
-
-      cout<<"Matriz de costos al principio"<<endl;
+    cout<<endl;
+    cout<<"Matriz de costos "<<endl;
+    cout<<endl;
        for(int i=0; i<Routers_; i++){
            
            for (int j = 0; j < Routers_; j++){
@@ -103,5 +102,8 @@ void Administrador::inicializarMatrizCostos()
            }
            cout<<endl;
        }
+
+
 }
+
 
