@@ -18,13 +18,15 @@ int cost[100][100], n ;
 
 int getMin(int dist[] , bool visited[]){
     int key = 0 ; 
-    int min = INT_MAX ; 
+    int min = INT_MAX ;
+
     for(int i=0;i < n ; i++){
         if(!visited[i] && dist[i]<min){
             min = dist[i] ; 
             key = i ; 
         }
     }
+
     return key ; 
 }
 
@@ -32,8 +34,8 @@ void display(int dist[] , int par[] ){
    for(int i =0 ;i < n ;i++){
        int temp = par[i] ; 
        cout<<i << " <- " ;
-       while(temp!=-1)
-       {
+       
+       while(temp!=-1){
            cout<< temp << " <- " ;
            temp = par[temp] ; 
        }
@@ -77,6 +79,7 @@ int main(void) {
         int origen;
         int destino;
         int ancho_banda;
+        
         /* Definiendo la matriz de adyacencia */
        int i, j, **A;
        for(int i=0; i<100; i++){
