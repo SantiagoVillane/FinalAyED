@@ -12,7 +12,7 @@
 #include"VarGlobales.h"
 
 
-#define INF 9999
+#define INF 999
 #define TAM_MAX_PAG 25
 #define TAM_MIN_PAG 5
 
@@ -39,7 +39,7 @@ void Administrador :: leerArchivo()
     linea2 = strtok(NULL, delimitador);
                     
                     
-    Routers_ = atoi(linea1);
+    Routers_= atoi(linea1);
     Computadoras_ = atoi(linea2);
     //Routers = Routers_;
     //Computadoras = Computadoras_;
@@ -66,11 +66,42 @@ void Administrador :: leerArchivo()
 			} 
 			cout<<endl;
             cout<<"Origen -> "<<origen<<" Destino -> "<<destino<<" Ancho de banda -> "<<ancho_banda<<" Peso -> "<<TAM_MAX_PAG/ancho_banda<<endl;
+            cost[origen][destino] = ancho_banda;
+            for(int i=0; i<Routers_; i++){
+           for (int j = 0; j < Routers_; j++){
+                
+                   cout<< cost[origen][destino] <<endl;
+                
+           }
+       }
             
-		break;
 		}
 	}
     
     }
 
 }
+
+void Administrador::inicializarMatrizCostos()
+{
+    for(int i=0; i<Routers_; i++){
+           for (int j = 0; j < Routers_; j++){
+                if(i==j)
+                    cost[i][j] = 0;
+                else
+                    cost[i][j] = INF;
+           }
+       }
+
+      cout<<"Matriz de costos al principio"<<endl;
+       for(int i=0; i<Routers_; i++){
+           
+           for (int j = 0; j < Routers_; j++){
+                
+                   cout<< cost[i][j]<< "   "  ;
+                
+           }
+           cout<<endl;
+       }
+}
+

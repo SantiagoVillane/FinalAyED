@@ -59,7 +59,7 @@ void display(int dist[] , int par[] ){
 }
 
 
-void dijkstra(int src ){
+void dijkstra(int src, int dest){
     int dist[100] ; //Distancia entre el nodo source y cada uno de los nodos
     int par[100];         //par[i] contiene el nodo anterior al nodo i. Para llegar al nodo i el camino mas corto es par[i] (par significa parent(nodo padre)) 
     bool visited[100] ={0} ;  //Array de nodos visitados, inicializa todos en cero (ningun nodo fue visitado)
@@ -181,5 +181,5 @@ std::ifstream archivo_conf("config.txt");
     }
     /*int src ; 
     cout<<"\nEnter source : " ;  cin>>src ;*/
-    dijkstra(0) ; 
+    dijkstra(0,3) ; 
 }

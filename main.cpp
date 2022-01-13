@@ -3,8 +3,7 @@
 #include "VarGlobales.h"
 
 using namespace std;
-int Routers;
-int Computadoras;
+
 
 int main()
 {   Administrador administrador;
@@ -18,7 +17,7 @@ int main()
     cin.get();
 
     administrador.leerArchivo();
-       
+    administrador.inicializarMatrizCostos();   
 
     return 0;
 }

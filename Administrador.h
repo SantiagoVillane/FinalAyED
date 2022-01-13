@@ -17,10 +17,13 @@ class Administrador
 		int origen;
 		int destino;
 		int ancho_banda;
+		int cost[100][100];
 		
 	public:
 		
 		void leerArchivo();
+		void inicializarMatrizCostos();
+		void dijkstra();
 		
 		
 		
