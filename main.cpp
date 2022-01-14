@@ -17,7 +17,7 @@ int main()
     cin.get();
     administrador.inicializarMatrizCostos();
     administrador.leerArchivo();
-    
+    administrador.dijkstra(0);
        
 
     return 0;
