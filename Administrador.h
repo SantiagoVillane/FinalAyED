@@ -22,11 +22,10 @@ class Administrador
 	public:
 		void inicializarMatrizCostos();
 		void leerArchivo();
-		int calcular_tablas();
-		int suma (int origen_, int destino_);
 		int getMin(int dist[] , bool visited[]);
 		void dijkstra(int src);
 		void display(int dist[] ,int  par[]) ; 
+		void mostrar();
 		
 };
 

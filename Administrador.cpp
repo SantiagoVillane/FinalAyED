@@ -106,27 +106,7 @@ void Administrador :: leerArchivo()
 
 }
 
-int Administrador :: suma(int origen_,int destino_)
-{
-    origen=origen_;
-    destino = destino_;
-    int suma = origen + destino;
-    return suma;
 
-}
-
-int Administrador::calcular_tablas(){
-    int numero =0;
-	for(int i=0; i<Routers_; i++){
-        for(int j=0; j<Routers_; j++){
-		 numero =this->suma(i,j);
-        }
-		//cout<<"||||||||||||||||||||||||||||||||||||||"<<endl;
-		//tabla.imprimir();
-		
-	}
-    return numero;
-}
 
 /* \brief   Obtiene el nodo que tiene la distancia mínima. Solo tiene en cuenta
  *          los nodos que no han sido visitados
@@ -180,7 +160,7 @@ void Administrador :: dijkstra(int src){
 
     for(int g = 0  ;g<Routers_-1 ; g++){    //Analizamos todos los nodos (dentro del for se esta analizando el nodo g)
          //u es el nodo adyacente
-        int u = this->getMin( dist, visited);     //Obtengo el indice del nodo de menor distancia  al nodo g
+        int u = getMin( dist, visited);     //Obtengo el indice del nodo de menor distancia  al nodo g
         visited[u] = true ;                 //Coloco este nodo como visitado
         cout<< " min = " << u <<endl; 
         //Analizo que no haya ningun nodo mejor que u
@@ -200,3 +180,4 @@ void Administrador :: dijkstra(int src){
     display(dist , par) ; 
      
 }
+
