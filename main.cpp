@@ -17,8 +17,12 @@ int main()
     cin.get();
     administrador.inicializarMatrizCostos();
     administrador.leerArchivo();
-    administrador.dijkstra(0);
-       
+    administrador.mostrar();
+    for(int i = 0; i < 5 ; i++ )
+    {
+        administrador.crearPagina();
+    }
+     
 
     return 0;
 }

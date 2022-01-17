@@ -7,9 +7,13 @@
 #include <sys/types.h>
 #include <signal.h>
 #include <unistd.h>
+
+
 #include<bits/stdc++.h>
 #include "Administrador.h"
+
 #include"VarGlobales.h"
+
 
 
 #define INF 999
@@ -17,6 +21,9 @@
 #define TAM_MIN_PAG 5
 
 using namespace std;
+
+
+
 /*Inicializamos la matriz con todos los pesos en INF, ya que no sabemos que nodos estan conectados entre si,
  La diagonal proncipal la dejamos en 0 porque estamos parados en el mismo nodo por ende el coste es 0 */
 void Administrador::inicializarMatrizCostos()
@@ -181,3 +188,73 @@ void Administrador :: dijkstra(int src){
      
 }
 
+void Administrador :: mostrar()
+{
+    for (int i = 0; i < Routers_ ; i++ )
+    {
+        dijkstra(i);
+    }
+}
+/*void Administrador :: mostrarEnlaces()
+{
+    int enlaces = 0;
+    for(int i=0; i<Routers_; i++){
+           
+           for (int j = 0; j < Routers_; j++){
+                
+                  if( cost[i][j] > 0 && cost[i][j]  != INF)
+                  {
+                      enlaces++;
+                  }
+                
+           }
+           cout<<"La cantidad de enlaces del Router "<<i<< " son: "<<enlaces<<endl;
+       }
+
+}*/
+void Administrador :: crearPagina(){
+//Cada cierta cantidad de pasos de simulacion (5) se generaran paginas aleatorioas de compuatadoras aleatorias.
+//
+	unsigned int seed; //semilla 
+	FILE* urandom = fopen("/dev/urandom", "r"); //archivo que sirve como denerador de numeros aleatorios 
+	fread(&seed, sizeof(int), 1, urandom);//leemos el archivo
+                                          //param: la semilla, tamaño : sizeof(int),  Número de elementos, cada uno con un tamaño de bytes de tamaño,puntero al file
+	fclose(urandom); //cierro el archivo
+	srand(seed); //inicializamos el  generador de números pseudoaleatorios usando el argumento seed (semilla) . 
+    
+	//srand(time(0));
+        
+  
+	int i = rand() % (Routers_);
+   
+	//srand(time(0));
+	int j = rand() % (Computadoras_);
+	int arreglo1[2]={i,j};
+    //Las direcciones  IP tienen dos partes de 1 byte cada una: la primera indica el router y la segunda la máquina terminal conectada al router
+
+
+	vector<int> ip_comp_origen(arreglo1,arreglo1+sizeof(arreglo1)/sizeof(arreglo1[0]));
+    
+	//srand(time(0));
+	int k = rand() % (Routers_);
+	//srand(time(0));
+	int l = rand() % (Computadoras_);
+	int arreglo2[2]={k,l};
+	vector<int> ip_comp_destino(arreglo2,arreglo2+sizeof(arreglo2)/sizeof(arreglo2[0]));
+    
+   // vector<int> ip_comp_origen(i,j);
+    
+        
+    
+   
+    //vector<int> ip_comp_destino(k,l);
+	int tam_pag = TAM_MIN_PAG + rand() % ( (TAM_MAX_PAG+1) - TAM_MIN_PAG )  ;//uso (TAM_MAX_PAG+1) así el rango de valores pseudoaleatorios incluye el nro TAM_MAX_PAG
+    
+	Pagina nva_pag(total_pag, tam_pag, ip_comp_origen, ip_comp_destino);
+	cout<<"NUEVA PAGINA CREADA: "<<endl;
+	nva_pag.imprimir();
+	//Se envía la página creada al router que corresponde.
+	
+	//routers.elemento_pos(i).recibir_pagina(nva_pag);//Por razones de tiempo no se pudo implementar la colecciones de páginas recibidas y para envío que deberían compartir los routeres con sus máquinas por lo tanto se les envía las páginas creadas desde adminsuistrador, 
+	total_pag++;
+}

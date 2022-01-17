@@ -59,7 +59,7 @@ void display(int dist[] , int par[] ){
 }
 
 
-void dijkstra(int src){
+void dijkstra(int src,int dest){
     int dist[100] ; //Distancia entre el nodo source y cada uno de los nodos
     int par[100];         //par[i] contiene el nodo anterior al nodo i. Para llegar al nodo i el camino mas corto es par[i] (par significa parent(nodo padre)) 
     bool visited[100] ={0} ;  //Array de nodos visitados, inicializa todos en cero (ningun nodo fue visitado)
@@ -68,7 +68,7 @@ void dijkstra(int src){
 
     dist[src] = 0 ;     //No hay distancia con sigo mismo
     par[src]  = -1 ;    //No tiene nodo anterior
-
+  
     for(int g = 0  ;g<n-1 ; g++){    //Analizamos todos los nodos (dentro del for se esta analizando el nodo g)
          //u es el nodo adyacente
         int u = getMin( dist, visited);     //Obtengo el indice del nodo de menor distancia  al nodo g
@@ -91,7 +91,24 @@ void dijkstra(int src){
     display(dist , par) ; 
 }
 
+/*void dijkstra( int inicial ){
+    init(); //inicializamos nuestros arreglos
+    Q.push( Node( inicial , 0 ) ); //Insertamos el vértice inicial en la Cola de Prioridad
+    distancia[ inicial ] = 0;      //Este paso es importante, inicializamos la distancia del inicial como 0
+    int actual , adyacente , peso;
+    while( !Q.empty() ){                   //Mientras cola no este vacia
+        actual = Q.top().first;            //Obtengo de la cola el nodo con menor peso, en un comienzo será el inicial
+        Q.pop();                           //Sacamos el elemento de la cola
+        if( visitado[ actual ] ) continue; //Si el vértice actual ya fue visitado entonces sigo sacando elementos de la cola
+        visitado[ actual ] = true;         //Marco como visitado el vértice actual
 
+        for( int i = 0 ; i < ady[ actual ].size() ; ++i ){ //reviso sus adyacentes del vertice actual
+            adyacente = ady[ actual ][ i ].first;   //id del vertice adyacente
+            peso = ady[ actual ][ i ].second;        //peso de la arista que une actual con adyacente ( actual , adyacente )
+            if( !visitado[ adyacente ] ){        //si el vertice adyacente no fue visitado
+                relajacion( actual , adyacente , peso ); //realizamos el paso de relajacion
+            }
+        }*/
 
 int main(void) { 
     

@@ -1,7 +1,7 @@
 CC=g++
 CFLAGS=-c -Wall
 LDFLAGS=
-SOURCES=main.cpp Administrador.cpp 
+SOURCES=main.cpp Administrador.cpp Pagina.cpp 
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=final
 
