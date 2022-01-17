@@ -9,6 +9,7 @@
 #include <time.h>       /* time */
 
 #include "Pagina.h"
+#include "Router.h"
 using namespace std;
 class Administrador
 {

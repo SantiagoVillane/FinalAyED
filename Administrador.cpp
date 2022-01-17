@@ -216,7 +216,7 @@ void Administrador :: crearPagina(){
 //Cada cierta cantidad de pasos de simulacion (5) se generaran paginas aleatorioas de compuatadoras aleatorias.
 //
 	unsigned int seed; //semilla 
-	FILE* urandom = fopen("/dev/urandom", "r"); //archivo que sirve como denerador de numeros aleatorios 
+	FILE* urandom = fopen("/dev/urandom", "r"); //archivo que sirve como generador de numeros aleatorios 
 	fread(&seed, sizeof(int), 1, urandom);//leemos el archivo
                                           //param: la semilla, tamaño : sizeof(int),  Número de elementos, cada uno con un tamaño de bytes de tamaño,puntero al file
 	fclose(urandom); //cierro el archivo
@@ -226,7 +226,7 @@ void Administrador :: crearPagina(){
         
   
 	int i = rand() % (Routers_);
-   
+    
 	//srand(time(0));
 	int j = rand() % (Computadoras_);
 	int arreglo1[2]={i,j};
@@ -253,8 +253,7 @@ void Administrador :: crearPagina(){
 	Pagina nva_pag(total_pag, tam_pag, ip_comp_origen, ip_comp_destino);
 	cout<<"NUEVA PAGINA CREADA: "<<endl;
 	nva_pag.imprimir();
-	//Se envía la página creada al router que corresponde.
-	
-	//routers.elemento_pos(i).recibir_pagina(nva_pag);//Por razones de tiempo no se pudo implementar la colecciones de páginas recibidas y para envío que deberían compartir los routeres con sus máquinas por lo tanto se les envía las páginas creadas desde adminsuistrador, 
+
 	total_pag++;
+    
 }
