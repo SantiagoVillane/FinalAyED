@@ -15,14 +15,13 @@ int main()
     cout<<"Si desea modificarlo modifiquelo y luego presione enter"<<endl;
     cout<<"Recuerde que si no lo modifica y solo presiona enter el archivo quedara como la ultima vez que fue modificado"<<endl;
     cin.get();
+    
     administrador.inicializarMatrizCostos();
     administrador.leerArchivo();
     administrador.mostrar();
-    for(int i = 0; i < 5 ; i++ )
-    {
-        administrador.crearPagina();
-    }
-     
 
+    for(int i = 0; i < 5 ; i++ )
+        administrador.crearPagina();
+     
     return 0;
 }
