@@ -102,10 +102,16 @@ int main(void) {
 
     int *pdist, s, t, P[TAM_MAX_PAG];
 
-    s = 0;
-    t = 4;
+    s = 2;
+    t = 3;
 
     pdist = dijkstra(cost, s, t, P);
+
+    cout<<"Retorno Dijkstra " <<endl;
+
+    for(int i=0; i<TAM_MAX_PAG; i++){
+        cout<<pdist[i] <<"  ";
+    }
 
     if (pdist[t]!=INF){
         cout<<"\n\n distancia minima del nodo "<<s
@@ -120,7 +126,7 @@ int main(void) {
 }
 //    int src ; 
 //    cout<<"\nEnter source : " ;  cin>>src ;
-//    dijkstra(src);
+//    dijkstra1(src);
 
 
 int *dijkstra(int C[][TAM_MAX_PAG], int s, int t, int Pre[]){

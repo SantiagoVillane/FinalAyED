@@ -16,9 +16,12 @@ int main()
     cout<<"Recuerde que si no lo modifica y solo presiona enter el archivo quedara como la ultima vez que fue modificado"<<endl;
     cin.get();
     
+    cout<<"-------------------Inicializar matriz de costos-------------------"<<endl;
+    administrador.inicializarMatrizCostos();                    
+    
+    cout<<"-------------------Leer archivo-------------------"<<endl;
     administrador.leerArchivo();
 
-    administrador.inicializarMatrizCostos();                    
     administrador.mostrar();                                   
 /*
     for(int i = 0; i < 5 ; i++ )

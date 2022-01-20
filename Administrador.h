@@ -24,7 +24,9 @@ class Administrador
 		void inicializarMatrizCostos();
 		void leerArchivo();
 		int getMin(int dist[] , bool visited[]);
-		void dijkstra(int src);
+		void dijkstra1(int src);
+		int *dijkstra(int C[][5],int s, int t, int P[]);
+		void camino(int P[], int s, int t);
 		void display(int dist[] ,int  par[]) ; 
 		void mostrar();
 		void crearPagina();

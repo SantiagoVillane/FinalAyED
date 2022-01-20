@@ -17,8 +17,10 @@
  
  
 #define INF 999
-#define TAM_MAX_PAG 25
+#define TAM_MAX_PAG 5
 #define TAM_MIN_PAG 5
+#define MIEMBRO 1
+#define NO_MIEMBRO 0
  
 using namespace std;
  
@@ -28,8 +30,8 @@ using namespace std;
  La diagonal proncipal la dejamos en 0 porque estamos parados en el mismo nodo por ende el coste es 0 */
 void Administrador::inicializarMatrizCostos()
 {
-    for(int i=0; i<100; i++){
-           for (int j = 0; j < 100; j++){
+    for(int i=0; i<5; i++){
+           for (int j = 0; j < 5; j++){
                 if(i==j)
                     cost[i][j] = 0;
                 else
@@ -155,7 +157,7 @@ void Administrador :: display(int dist[] , int par[] ){
 } 
  
  
-void Administrador :: dijkstra(int src){
+void Administrador :: dijkstra1(int src){
     int dist[100] ; //Distancia entre el nodo source y cada uno de los nodos
     int par[100];         //par[i] contiene el nodo anterior al nodo i. Para llegar al nodo i el camino mas corto es par[i] (par significa parent(nodo padre)) 
     bool visited[100] ={0} ;  //Array de nodos visitados, inicializa todos en cero (ningun nodo fue visitado)
@@ -190,10 +192,27 @@ void Administrador :: dijkstra(int src){
  
 void Administrador :: mostrar()
 {
-    for (int i = 0; i < Routers_ ; i++ )
-    {
-        dijkstra(i);
+    int *pdist, s, t, P[TAM_MAX_PAG];
+
+    s = 0;
+    t = 4;
+
+    pdist = dijkstra(cost, s, t, P);
+
+    for(int i=0; i<TAM_MAX_PAG; i++){
+        cout<<pdist[i] <<"  ";
     }
+
+    if (pdist[t]!=INF){
+        cout<<"\n\n distancia minima del nodo "<<s
+            <<" al nodo "<<t<<" es= "<< pdist[t];
+   
+        cout<<"\n\n CAMINO = ";
+        camino(P,s,t);
+        cout<<endl;
+       
+    }
+
 }
 /*void Administrador :: mostrarEnlaces()
 {
@@ -254,4 +273,68 @@ void Administrador :: crearPagina(){
  
     total_pag++;
     
+}
+
+int* Administrador::dijkstra(int C[][TAM_MAX_PAG], int s, int t, int Pre[]){
+
+       static int D[TAM_MAX_PAG];
+       int S[TAM_MAX_PAG];
+       int actual, i, k, b;
+       int menordist, nuevadist;
+
+       // inicializan las variables y se asignan
+       for(i=0;i<TAM_MAX_PAG;i++){
+              S[i]=NO_MIEMBRO;
+              D[i]=INF;
+              Pre[i]= -1;
+        }//fin for
+
+       S[s]=MIEMBRO; D[s]=0; actual=s; b=1; k=0;
+       
+       while((actual!=t)&&(b==1)){       
+              b=0;
+              menordist=INF;
+              //printf("\n\n   D[%i]=%3i ",actual,D[actual]);
+              
+              for(i=0;i<TAM_MAX_PAG;i++){
+                      //cout<<"\n  i= "<<i;                
+                      if(S[i]==NO_MIEMBRO){
+                             nuevadist=D[actual]+C[actual][i];
+                             //printf("\n nuevadist=%3i D[%2i]=%3i ",nuevadist,i,D[i]);
+                             if(nuevadist<D[i]){
+                                    D[i]=nuevadist;//actual es menor que la anterior
+                                    Pre[i]=actual; b=1;
+                             }//fin if
+                             //printf("\n menordist=%3i D[%2i]=%3i ",menordist,i,D[i]);
+                             if(D[i]<menordist){
+                                    menordist=D[i];
+                                    k=i;  b=1;//guardo el nodo de la menor distancia
+                             }//fin if
+                      }//fin if
+              }//fin for
+
+              actual=k;                                 // actual se ubica en el nodo de menor distancia
+              S[actual]=MIEMBRO;
+              printf("\n\n         D     S     Pre");
+
+              for(i=0;i<TAM_MAX_PAG;i++)
+                       printf("\n[%2i] %5i %5i %5i     ",i,D[i], S[i],Pre[i]);
+       
+              //printf("\n\n   D[%i]=%3i ",actual,D[actual]);
+
+              //system("PAUSE");
+              cin.get();
+       }//fin while
+
+       return D;
+}// fin dijkstra
+
+//Funcion para imprimir el camino mas corto nodo por nodo
+void Administrador::camino(int P[], int s, int t){
+    if(t==s)
+        cout << s <<"   ";
+    else{
+        camino(P, s, P[t]);
+        cout << t <<"   ";
+    }
 }
