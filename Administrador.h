@@ -1,5 +1,3 @@
-
-
 #ifndef ADMINISTRADOR_H
 #define ADMINISTRADOR_H
 //#include <iostream>
@@ -20,7 +18,7 @@ class Administrador
 		int destino;
 		int ancho_banda;
 		int total_pag;
-		int cost[100][100];
+		int cost[5][5];
 		
 	public:
 		void inicializarMatrizCostos();
