@@ -103,7 +103,7 @@ int main(void) {
     int *pdist, s, t, P[TAM_MAX_PAG];
 
     s = 0;
-    t = 2;
+    t = 4;
 
     pdist = dijkstra(cost, s, t, P);
 
@@ -111,8 +111,9 @@ int main(void) {
         cout<<"\n\n distancia minima del nodo "<<s
             <<" al nodo "<<t<<" es= "<< pdist[t];
    
-        cout<<"\n\n CAMINO= ";
+        cout<<"\n\n CAMINO = ";
         camino(P,s,t);
+        cout<<endl;
        
     }                
 
