@@ -27,9 +27,9 @@ using namespace std;
  
  
 /*Inicializamos la matriz con todos los pesos en INF, ya que no sabemos que nodos estan conectados entre si,
- La diagonal proncipal la dejamos en 0 porque estamos parados en el mismo nodo por ende el coste es 0 */
-void Administrador::inicializarMatrizCostos()
-{
+ La diagonal principal la dejamos en 0 porque estamos parados en el mismo nodo por ende el coste es 0 */
+
+void Administrador::inicializarMatrizCostos(){
     for(int i=0; i<5; i++){
            for (int j = 0; j < 5; j++){
                 if(i==j)
@@ -37,16 +37,12 @@ void Administrador::inicializarMatrizCostos()
                 else
                     cost[i][j] = INF;
            }
-       }
- 
-      
+       } 
 }
+
  
- 
- 
-void Administrador :: leerArchivo()
-{
-    FILE *fichero = fopen ( "config.txt" , "r" );
+void Administrador :: leerArchivo(){
+    FILE *fichero = fopen ("config.txt" , "r");
         
     const char delimitador[2] = " ";
     char cadena1 [200];
@@ -80,39 +76,31 @@ void Administrador :: leerArchivo()
     string linea;
     while(getline(archivo_conf, linea)){
         switch(linea[0]){
-        
-        case('*'):
-        {
-            linea.erase(linea.begin());
-            std::istringstream iss(linea);
-        //  int origen, destino, ancho_banda;
-            if (!(iss >> origen >> destino >> ancho_banda)) { 
-                cout<<"Error en la lectura de la conexion de router."<<endl;
-                break; 
-            } 
-            cout<<endl;
-            cout<<"Origen -> "<<origen<<" Destino -> "<<destino<<" Ancho de banda -> "<<ancho_banda<<" Peso -> "<<TAM_MAX_PAG/ancho_banda<<endl;
-            cost[origen][destino] = ancho_banda; //guardamos los valores de las conexiones en la matriz 
-            
-            
+            case('*'):{
+                linea.erase(linea.begin());
+                std::istringstream iss(linea);
+            //  int origen, destino, ancho_banda;
+                if (!(iss >> origen >> destino >> ancho_banda)) { 
+                    cout<<"Error en la lectura de la conexion de router."<<endl;
+                    break; 
+                } 
+                cout<<endl;
+                cout<<"Origen -> "<<origen<<" Destino -> "<<destino<<" Ancho de banda -> "<<ancho_banda<<" Peso -> "<<TAM_MAX_PAG/ancho_banda<<endl;
+                cost[origen][destino] = ancho_banda; //guardamos los valores de las conexiones en la matriz 
+
+
+            }
         }
-    }
-    
     }
     cout<<endl;
     cout<<"Matriz de costos "<<endl;
     cout<<endl;
+
        for(int i=0; i<Routers_; i++){
-           
-           for (int j = 0; j < Routers_; j++){
-                
+           for (int j = 0; j < Routers_; j++)
                    cout<< cost[i][j]<< "   "  ;
-                
-           }
            cout<<endl;
        }
- 
- 
 }
  
  
@@ -190,8 +178,8 @@ void Administrador :: dijkstra1(int src){
      
 }
  
-void Administrador :: mostrar()
-{
+void Administrador :: mostrar(){
+
     int *pdist, s, t, P[TAM_MAX_PAG];
 
     s = 0;
@@ -199,8 +187,9 @@ void Administrador :: mostrar()
 
     pdist = dijkstra(cost, s, t, P);
 
-    for(int i=0; i<TAM_MAX_PAG; i++){
-        cout<<pdist[i] <<"  ";
+    cout<<"Distancias desde el nodo 0";
+    for(int i=0; i<TAM_MAX_PAG; i++){       //muestra las distancias desde el nodo de inicio al resto de los nodos
+        cout<<pdist[i] <<"  ";      
     }
 
     if (pdist[t]!=INF){
@@ -210,26 +199,18 @@ void Administrador :: mostrar()
         cout<<"\n\n CAMINO = ";
         camino(P,s,t);
         cout<<endl;
-       
     }
 
 }
-/*void Administrador :: mostrarEnlaces()
-{
+/*void Administrador :: mostrarEnlaces(){
     int enlaces = 0;
-    for(int i=0; i<Routers_; i++){
-           
-           for (int j = 0; j < Routers_; j++){
-                
-                  if( cost[i][j] > 0 && cost[i][j]  != INF)
-                  {
-                      enlaces++;
-                  }
-                
-           }
-           cout<<"La cantidad de enlaces del Router "<<i<< " son: "<<enlaces<<endl;
-       }
- 
+    for(int i=0; i<Routers_; i++){      
+        for (int j = 0; j < Routers_; j++){                
+               if( cost[i][j] > 0 && cost[i][j]  != INF)
+                   enlaces++;   
+        }
+        cout<<"La cantidad de enlaces del Router "<<i<< " son: "<<enlaces<<endl;
+    }
 }*/
  
  
@@ -246,9 +227,6 @@ void Administrador :: crearPagina(){
     
     //srand(time(0));
         
-  
-   
- 
  
     int i = rand() % (Routers_);
     //srand(time(0));
@@ -315,15 +293,15 @@ int* Administrador::dijkstra(int C[][TAM_MAX_PAG], int s, int t, int Pre[]){
 
               actual=k;                                 // actual se ubica en el nodo de menor distancia
               S[actual]=MIEMBRO;
-              printf("\n\n         D     S     Pre");
+              //printf("\n\n         D     S     Pre");
 
-              for(i=0;i<TAM_MAX_PAG;i++)
-                       printf("\n[%2i] %5i %5i %5i     ",i,D[i], S[i],Pre[i]);
+              //for(i=0;i<TAM_MAX_PAG;i++)
+                //    printf("\n[%2i] %5i %5i %5i     ",i,D[i], S[i],Pre[i]);
        
               //printf("\n\n   D[%i]=%3i ",actual,D[actual]);
 
               //system("PAUSE");
-              cin.get();
+              //cin.get();
        }//fin while
 
        return D;

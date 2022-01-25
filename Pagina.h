@@ -8,8 +8,7 @@ Esta clase representa las páginas que generan las computadoras y que contiene u
 
 using namespace std;
 
-class Pagina
-{
+class Pagina{
 	private:
 		int id;//número de la página.
 		int tamanio;//tamaño de la página en cantidad de paquetes

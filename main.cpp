@@ -5,8 +5,9 @@
 using namespace std;
 
 
-int main()
-{   Administrador administrador;
+int main(){
+    
+    Administrador administrador;
     
     //cout<<"La cantidad de Routers al principo es: "<<Routers<<endl;
     //cout<<"La cantidad de Computadoras al principio es "<<Computadoras<<endl;
@@ -22,10 +23,12 @@ int main()
     cout<<"-------------------Leer archivo-------------------"<<endl;
     administrador.leerArchivo();
 
+    
+    cout<<"-------------------Mostrar-------------------"<<endl;
     administrador.mostrar();                                   
 /*
     for(int i = 0; i < 5 ; i++ )
-        administrador.crearPagina();                            // DEFINIR
+        administrador.crearPagina();                       
      
     return 0;
 */
