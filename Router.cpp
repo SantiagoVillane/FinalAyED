@@ -3,10 +3,10 @@
 
 using namespace std;
 
-int Router :: obtenerRouterOrigen(int RouterOrigen)
-{
-    this->RouterOrigen = RouterOrigen;
-    cout<<"Router Origen"<<RouterOrigen<<endl;
-    return RouterOrigen;
+int Router::getIp(){
+    return this->ip;
+}
 
-} 
+void Router::setIp(int ip){
+    this->ip = ip;
+}

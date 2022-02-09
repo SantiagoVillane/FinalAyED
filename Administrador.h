@@ -31,6 +31,7 @@ class Administrador
 		void mostrar();
 		void crearPagina();
 		void mostrarEnlaces();
+		void recomputarRutas();
 };
 
 #endif // Paquete_H
