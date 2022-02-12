@@ -1,7 +1,7 @@
 CC=g++
 CFLAGS=-c -Wall
 LDFLAGS=
-SOURCES=main.cpp Administrador.cpp Pagina.cpp Router.cpp
+SOURCES=main.cpp Administrador.cpp Pagina.cpp Router.cpp Cola.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=final
 

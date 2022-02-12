@@ -7,7 +7,7 @@
 #include <sys/types.h>
 #include <signal.h>
 #include <unistd.h>
-#include<climits>
+#include <climits>
  
 //#include<bits/stdc++.h>
 #include "Administrador.h"
